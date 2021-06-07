@@ -1,6 +1,15 @@
 import CalendarIcon from "../components/Icons/CalendarIcon";
 
 function Home() {
+    const spentExpenses = [
+        {title: 'Total Essential Expenses', value: '3000.00'},
+        {title: 'Total Personal Expenses', value: '1000.00'},
+    ]
+    const wallet = [
+        {title: 'For Total Essential Expenses', value: '3000.00'},
+        {title: 'For Total Personal Expenses', value: '1000.00'},
+        {title: 'Savings', value: '500.00'},
+    ]
     return (
         <div>
             <h1 className="text-5xl font-bold text-thrift-dark">Start thrifting now.</h1>
@@ -8,12 +17,9 @@ function Home() {
                 <CallToActionButton icon={<CalendarIcon />} text="Set up your budget" />
             </div>
             {/* Overall/General budget report */}
-            <section className="mt-[79px]">
-                <div className="flex items-center space-x-12">
-                    <GeneralExpensesCard expensesTitle="Total Essential Expenses" expensesValue="3000.00" />
-                    <GeneralExpensesCard expensesTitle="Total Personal Expenses" expensesValue="1000.00" />
-                    <GeneralExpensesCard expensesTitle="Savings" expensesValue="500.00" />
-                </div>
+            <section className="mt-[79px] space-y-10">
+                <GeneralExpenseGroupContainer reports={spentExpenses} title="Spent" />
+                <GeneralExpenseGroupContainer reports={wallet} title="Wallet" />
             </section>
         </div>
     )
@@ -23,8 +29,21 @@ function GeneralExpensesCard(props) {
     const { expensesTitle, expensesValue } = props
     return (
         <div className="w-72 py-4 pl-4 border-2 border-thrift rounded-md bg-thrift-lightest">
-            <div className="font-medium text-lg">{expensesTitle}</div>
-            <div className="text-lg mt-3">{expensesValue}</div>
+            <div className="font-medium">{expensesTitle}</div>
+            <div className="mt-3">Php. {expensesValue}</div>
+        </div>
+    )
+}
+function GeneralExpenseGroupContainer(props) {
+    const { reports, title } = props
+    return (
+        <div>
+            <h1 className="text-lg font-medium">{ title }</h1>
+            <div className="mt-3 flex flex-col w-full items-center space-y-10 md:flex-row md:space-y-0 md:space-x-12">
+                { 
+                    reports.map(report => <GeneralExpensesCard expensesTitle={report.title} expensesValue={report.value} />)
+                }
+            </div>
         </div>
     )
 }

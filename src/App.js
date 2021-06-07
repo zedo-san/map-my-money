@@ -12,8 +12,8 @@ import Home from "./views/Home";
 function App() {
     return (
         <div className="App">
-            <div className="h-screen">
-                <div className="flex h-full"> 
+            <div className="">
+                <div className="flex"> 
                     <Router>
                         <Navbar />
                         <div className="h-full w-full bg-thrift-lightest bg-opacity-10 pt-8 px-10">
@@ -38,7 +38,7 @@ function Navbar() {
     const userIcon = <UserIcon />
     const homeIcon = <HomeIcon />
     return (
-        <div className="h-full w-20 bg-thrift text-thrift-highlight px-1 py-8">
+        <div className="h-screen w-20 bg-thrift text-thrift-highlight px-1 py-8">
             <nav className="flex flex-col items-center justify-between h-full">
                 {/* brand */}
                 <div>
