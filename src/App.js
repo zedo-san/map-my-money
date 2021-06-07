@@ -13,10 +13,10 @@ function App() {
     return (
         <div className="App">
             <div className="">
-                <div className="flex"> 
+                <div className="flex overflow-hidden"> 
                     <Router>
                         <Navbar />
-                        <div className="h-full w-full bg-thrift-lightest bg-opacity-10 pt-8 px-10">
+                        <div className="w-full bg-thrift-lightest bg-opacity-10 pt-8 px-10 h-screen overflow-auto">
                             <Switch>
                                 <Route exact path="/">
                                     <Home />
