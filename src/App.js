@@ -3,11 +3,12 @@ import {
     Switch,
     Route,
     Link
-  } from "react-router-dom";
+} from "react-router-dom";
 import ThriftBrandIcon from './components/Icons/ThriftBrandIcon'
 import HomeIcon from './components/Icons/HomeIcon'
 import UserIcon from './components/Icons/UserIcon'
 import Home from "./views/Home";
+import SetupBudgetForm from "./views/SetupBudgetForm";
 
 function App() {
     return (
@@ -15,7 +16,10 @@ function App() {
             <div className="">
                 <div className="flex overflow-hidden"> 
                     <Router>
+                        {/* this is the navbar duuhhhhh?? */}
                         <Navbar />
+
+                        {/* this is where everything get's rendered, the big white space  */}
                         <div className="w-full bg-thrift-lightest bg-opacity-10 pt-8 px-10 h-screen overflow-auto">
                             <Switch>
                                 <Route exact path="/">
@@ -23,6 +27,9 @@ function App() {
                                 </Route>
                                 <Route path="/account">
                                     <h1>Account page</h1>
+                                </Route>
+                                <Route path="/budget/set-up">
+                                   <SetupBudgetForm />
                                 </Route>
                             </Switch>
                         </div>

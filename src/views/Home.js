@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+
 function Home() {
     const spentExpenses = [
         {title: 'Total Essential Expenses', value: '3000.00'},
@@ -29,11 +31,13 @@ function Home() {
 function CallToActionButton(props) {
     const {icon, text} = props
     return (
-        <button className="focus:outline-none px-6 py-3 bg-thrift-highlight text-thrift-dark rounded-md bg-opacity-90 
-            hover:shadow-sm hover:bg-opacity-70 focus:bg-opacity-100 transition-colors duration-150 ease-in-out flex items-center space-x-3">
-                { icon && <span className="inline-block w-5 h-5">{icon}</span> }
-                <span className="inline-block text-lg font-medium">{text}</span>
-        </button>
+        <Link to="/budget/set-up">
+            <button className="focus:outline-none px-6 py-3 bg-thrift-highlight text-thrift-dark rounded-md bg-opacity-90 
+                hover:shadow-sm hover:bg-opacity-70 focus:bg-opacity-100 transition-colors duration-150 ease-in-out flex items-center space-x-3">
+                    { icon && <span className="inline-block w-5 h-5">{icon}</span> }
+                    <span className="inline-block text-lg font-medium">{text}</span>
+            </button>
+        </Link>
     )
 }
 
@@ -138,4 +142,5 @@ function ExpensesTable() {
       </div>
     )
 }
+
 export default Home;
