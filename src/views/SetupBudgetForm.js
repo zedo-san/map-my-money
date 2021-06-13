@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Link } from 'react-router-dom' 
 
 function SetupBudgetForm() {
     const [page, setPage] = useState(1)
@@ -7,9 +8,14 @@ function SetupBudgetForm() {
     }
     return (
         <div>
-            <div className="bg-thrift-lightest bg-opacity-40 absolute inset-0 z-[-1]"></div>
+            {/* <div className="bg-thrift-lightest bg-opacity-40 absolute inset-0 z-[-1]"></div> */}
+            <Link to="/">
+                <button className="px-3 py-1 rounded-sm hover:bg-thrift-highlight hover:bg-opacity-40 text-sm">
+                    <div>Home</div>
+                </button>
+            </Link>
             { page === 1 && 
-                <div>
+                <div className="mt-3">
                     <h1 className="text-2xl font-bold text-thrift-dark">Choose your strategy</h1>
                     <h2 className="mt-3 text-gray-600">To start with, we have given you options below on which budget strategy you'd like to choose.</h2>
                     <div className="mt-16">

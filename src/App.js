@@ -55,6 +55,7 @@ function Navbar() {
                         </div>
                     </Link>
                 </div>
+                {/* nav items  */}
                 <div className="flex flex-col items-center space-y-5">
                     <Link to="/">
                         <NavbarLink linkIcon={homeIcon} />
