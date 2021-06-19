@@ -3,31 +3,64 @@ import { Link } from 'react-router-dom'
 
 function SetupBudgetForm() {
     const [page, setPage] = useState(1)
-    const setNextPage = (pageNum) => {
-        setPage(pageNum)
+    const setNextPage = () => {
+        setPage(page + 1)
+    }
+    const setPreviousPage = () => {
+        if(page !== 1) {
+            setPage(page - 1)
+        }
     }
     return (
         <div>
             {/* <div className="bg-thrift-lightest bg-opacity-40 absolute inset-0 z-[-1]"></div> */}
-            <Link to="/">
-                <button className="px-3 py-1 rounded-sm hover:bg-thrift-highlight hover:bg-opacity-40 text-sm">
-                    <div>Home</div>
-                </button>
-            </Link>
+            
             { page === 1 && 
-                <div className="mt-3">
-                    <h1 className="text-2xl font-bold text-thrift-dark">Choose your strategy</h1>
-                    <h2 className="mt-3 text-gray-600">To start with, we have given you options below on which budget strategy you'd like to choose.</h2>
-                    <div className="mt-16">
-                        <p className="font-medium text-gray-600">Click one to proceed:</p>
-                        <div className="mt-5">
-                            <StrategySelectionRadioButton nextPage={setNextPage}/>
+                <div>
+                    <div>
+                        <Link to="/">
+                            <button className="px-3 py-1 rounded-sm hover:bg-thrift-highlight hover:bg-opacity-70 text-sm bg-thrift-highlight bg-opacity-40">
+                                <div>Cancel</div>
+                            </button>
+                        </Link>
+                    </div>
+                    <div className="mt-3">
+                        <h1 className="text-2xl font-bold text-thrift-dark">Choose your strategy</h1>
+                        <h2 className="mt-3 text-gray-600">To start with, we have given you options below on which budget strategy you'd like to choose.</h2>
+                        <div className="mt-16">
+                            <p className="font-medium text-gray-600">Click one to proceed:</p>
+                            <div className="mt-5">
+                                <StrategySelectionRadioButton nextPage={setNextPage}/>
+                            </div>
                         </div>
                     </div>
                 </div>
             }
             { page === 2 && 
-                <div>Hello page 2</div>
+            <div>
+                <div>
+                    <button 
+                        className="px-3 py-1 rounded-sm hover:bg-thrift-highlight hover:bg-opacity-70 text-sm bg-thrift-highlight bg-opacity-40"
+                        onClick={setPreviousPage}    
+                    >
+                        <div>Previous</div>
+                    </button>
+                </div>
+                <div>
+                    <div>
+                        <div>50% will go to essential expenses</div>
+                        <div>30% will go to personal expenses</div>
+                        <div>and 20% will go to savings</div>
+                        <div>If there are still excess from the first 2 expenses, you will have the option to put it in savings or just keep it there in their own wallet</div>
+                        <Link to="/">
+                            <button className="focus:outline-none px-6 py-3 bg-thrift-highlight text-thrift-dark rounded-md bg-opacity-90 
+                                hover:shadow-sm hover:bg-opacity-70 focus:bg-opacity-100 transition-colors duration-150 ease-in-out flex items-center space-x-3">
+                                    <span className="inline-block text-sm font-medium">Proceed</span>
+                            </button>
+                        </Link>
+                    </div>
+                </div>
+            </div>
             }
         </div>
     )
@@ -39,7 +72,7 @@ function StrategySelectionRadioButton({nextPage}) {
             <div className="w-80 h-28 flex items-center justify-center space-x-3 rounded-md bg-thrift-lightest 
                 shadow-md border border-thrift-dark transform transition-transform duration-300 hover:shadow-xl 
                 hover:-translate-y-1 hover:-translate-x-1 cursor-pointer"
-                onClick={ () => { nextPage(2) } }
+                onClick={ () => { nextPage() } }
                 onMouseEnter={ () => { setShowInfo(true) } }
                 onMouseLeave={ () => { setShowInfo(false) } }
             >
